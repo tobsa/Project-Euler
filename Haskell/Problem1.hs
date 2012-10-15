@@ -15,15 +15,20 @@ problem1 [] = 0
 problem1 xs = problem1'' xs
 
 ------------------------------------------------------------
--- My solution
+-- Solution 1
 ------------------------------------------------------------
 problem1' :: [Int] -> Int
 problem1' xs = sum $ filter (\y -> (y `mod` 3 == 0) || (y `mod` 5 == 0)) (init xs)
 
 ------------------------------------------------------------
--- Improved solution
+-- Solution 2 (Improved)
 ------------------------------------------------------------
 problem1'' :: [Integer] -> Int
-problem1'' xs = sumDivisibleBy 3 + sumDivisibleBy 5 - sumDivisibleBy 15
-    where   sumDivisibleBy n = (n * (p * (p + 1))) `div` 2
-                where p = (length xs - 1) `div` n
+problem1'' xs = (sumDivisibleBy xs 3) + (sumDivisibleBy xs 5) - (sumDivisibleBy xs 15)
+
+------------------------------------------------------------
+-- Helper function
+------------------------------------------------------------    
+sumDivisibleBy :: [Integer] -> Int -> Int       
+sumDivisibleBy xs n = (n * (p * (p + 1))) `div` 2
+    where p = (length xs - 1) `div` n
