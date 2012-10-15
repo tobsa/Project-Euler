@@ -6,6 +6,24 @@
 --
 -- Find the sum of all the multiples of 3 or 5 below 1000.
 ------------------------------------------------------------
-summult :: [Int] -> Int
-summult [] = 0
-summult (xs) = sum $ filter (\y -> (y `mod` 3 == 0) || (y `mod` 5 == 0)) (init xs)
+
+------------------------------------------------------------
+-- Current version
+------------------------------------------------------------
+problem1 :: [Integer] -> Int
+problem1 [] = 0
+problem1 xs = problem1'' xs
+
+------------------------------------------------------------
+-- My solution
+------------------------------------------------------------
+problem1' :: [Int] -> Int
+problem1' xs = sum $ filter (\y -> (y `mod` 3 == 0) || (y `mod` 5 == 0)) (init xs)
+
+------------------------------------------------------------
+-- Improved solution
+------------------------------------------------------------
+problem1'' :: [Integer] -> Int
+problem1'' xs = sumDivisibleBy 3 + sumDivisibleBy 5 - sumDivisibleBy 15
+    where   sumDivisibleBy n = (n * (p * (p + 1))) `div` 2
+                where p = (length xs - 1) `div` n
