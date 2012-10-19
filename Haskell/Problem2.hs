@@ -11,6 +11,7 @@
 -- whose values do not exceed four million, find the sum of 
 -- the even-valued terms.
 ------------------------------------------------------------
+module Problem2 (problem2) where
 
 ------------------------------------------------------------
 -- Enter the two first terms as arguments
