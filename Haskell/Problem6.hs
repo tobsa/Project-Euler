@@ -23,4 +23,11 @@ problem6 x = bxs - axs
     where axs = sum(map (^2) [1..x])
           bxs = sum([1..x])^2
 
-          
+------------------------------------------------------------
+-- Solution 2
+------------------------------------------------------------
+problem6' :: Integer -> Integer
+problem6' x = axs^2 - bxs
+    where axs = (x*x + x) `div` 2
+          bxs = (2*x^2 + 2*x + x + 1) * x `div` 6
+
